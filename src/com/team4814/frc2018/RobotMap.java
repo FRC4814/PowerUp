@@ -18,7 +18,7 @@ public class RobotMap
 	// PWM
 	public static final int[] LEFT_MOTORS = { 5, 6, 7 };
 	public static final int[] RIGHT_MOTORS = { 2, 3, 4 };
-	public static final int[] ARM_MOTORS = { 8, 9 };
+	public static final int ARM_MOTORS = 8;
 	public static final int[] INTAKE_MOTORS = { 0, 1 };
 
 	// USB

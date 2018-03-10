@@ -49,6 +49,6 @@ public class CenterSwitchRAutoCommand extends CommandGroup
 
 	private void doWait()
 	{
-		addSequential(new WaitCommand(0.5));
+		addSequential(new WaitCommand(0.0));
 	}
 }
