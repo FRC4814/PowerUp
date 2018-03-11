@@ -10,10 +10,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class CenterSwitchAutoCommand extends CommandGroup
+public class CenterScaleAutoCommand extends CommandGroup
 {
 
-	public CenterSwitchAutoCommand()
+	public CenterScaleAutoCommand()
 	{
 		addSequential(new WaitForGameDataCommand());
 
@@ -36,10 +36,10 @@ public class CenterSwitchAutoCommand extends CommandGroup
 			}
 		}
 
-		boolean goLeft = DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'L';
+		boolean goLeft = DriverStation.getInstance().getGameSpecificMessage().charAt(1) == 'L';
 		if (goLeft)
-			addSequential(new CenterSwitchLAutoCommand());
+			addSequential(new CenterScaleLAutoCommand());
 		else
-			addSequential(new CenterSwitchRAutoCommand());
+			addSequential(new CenterScaleRAutoCommand());
 	}
 }

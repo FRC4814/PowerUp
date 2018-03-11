@@ -1,9 +1,7 @@
 package com.team4814.frc2018.autocommands;
 
-import com.team4814.frc2018.RobotConstants;
 import com.team4814.frc2018.commands.DrivePIDCommand;
 import com.team4814.frc2018.commands.DrivePIDRotateCommand;
-import com.team4814.frc2018.commands.MoveArmPIDCommand;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -15,13 +13,6 @@ public class CenterScaleRAutoCommand extends CommandGroup
 
 	public CenterScaleRAutoCommand()
 	{
-		addSequential(new WaitForGameDataCommand());
-
-		addParallel(new MoveArmPIDCommand(RobotConstants.ARM_SCALE_HEIGHT));
-		addSequential(new DrivePIDCommand(20.0, 0.5)); // drive forward
-
-		doWait();
-
 		addSequential(new DrivePIDRotateCommand(9.0, 0.7)); // turn to right
 
 		doWait();

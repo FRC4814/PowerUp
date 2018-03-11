@@ -15,13 +15,6 @@ public class CenterSwitchRAutoCommand extends CommandGroup
 
 	public CenterSwitchRAutoCommand()
 	{
-		addSequential(new WaitForGameDataCommand());
-
-		addParallel(new MoveArmPIDCommand(RobotConstants.ARM_SCALE_HEIGHT));
-		addSequential(new DrivePIDCommand(20.0, 0.5)); // drive forward
-
-		doWait();
-
 		addSequential(new DrivePIDRotateCommand(9.0, 0.7)); // turn to right
 
 		doWait();

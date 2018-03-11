@@ -15,13 +15,6 @@ public class CenterScaleLAutoCommand extends CommandGroup
 
 	public CenterScaleLAutoCommand()
 	{
-		addSequential(new WaitForGameDataCommand());
-
-		addParallel(new MoveArmPIDCommand(RobotConstants.ARM_SCALE_HEIGHT));
-		addSequential(new DrivePIDCommand(20.0, 0.5)); // drive forward
-
-		doWait();
-		// future: do command before this line before receiving game data so waiting for game data isn't necessary
 		addSequential(new DrivePIDRotateCommand(-9.0, 0.7)); // turn to left
 
 		doWait();
