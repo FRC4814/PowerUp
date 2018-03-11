@@ -10,10 +10,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class CenterSwitchLAutoCommand extends CommandGroup
+public class CenterScaleRAutoCommand extends CommandGroup
 {
 
-	public CenterSwitchLAutoCommand()
+	public CenterScaleRAutoCommand()
 	{
 		addSequential(new WaitForGameDataCommand());
 
@@ -22,20 +22,23 @@ public class CenterSwitchLAutoCommand extends CommandGroup
 
 		doWait();
 
-		addSequential(new DrivePIDRotateCommand(-9.0, 0.7)); // turn to left
-
-		doWait();
-
-		addParallel(new MoveArmPIDCommand(RobotConstants.ARM_SWITCH_HEIGHT));
-		addSequential(new DrivePIDCommand(80.0, 0.5)); // drive forward
-
-		doWait();
-
 		addSequential(new DrivePIDRotateCommand(9.0, 0.7)); // turn to right
 
 		doWait();
 
-		addSequential(new DrivePIDCommand(22.0, 0.5)); // drive forward
+		addSequential(new DrivePIDCommand(90.0, 0.5)); // drive forward
+
+		doWait();
+
+		addSequential(new DrivePIDRotateCommand(-9.0, 0.7)); // turn to left
+
+		doWait();
+
+		addSequential(new DrivePIDCommand(60.0, 0.5)); // drive forward
+
+		doWait();
+
+		addSequential(new DrivePIDRotateCommand(-18.0, 0.7)); // turn to left (face scale)
 
 		doWait();
 

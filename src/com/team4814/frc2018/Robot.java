@@ -7,6 +7,8 @@
 
 package com.team4814.frc2018;
 
+import com.team4814.frc2018.autocommands.CenterScaleLAutoCommand;
+import com.team4814.frc2018.autocommands.CenterScaleRAutoCommand;
 import com.team4814.frc2018.autocommands.CenterSwitchLAutoCommand;
 import com.team4814.frc2018.autocommands.CenterSwitchRAutoCommand;
 import com.team4814.frc2018.commands.DrivePIDCommand;
@@ -58,6 +60,8 @@ public class Robot extends TimedRobot
 		m_chooser.addObject("Drive Forward Test", new DrivePIDCommand(100.0, 0.4));
 		m_chooser.addObject("Center Switch R", new CenterSwitchRAutoCommand());
 		m_chooser.addObject("Center Switch L", new CenterSwitchLAutoCommand());
+		m_chooser.addObject("Center Scale L", new CenterScaleLAutoCommand());
+		m_chooser.addObject("Center Scale R", new CenterScaleRAutoCommand());
 
 		// Some test commands for the PID Arm
 		Command resetArmCommand = new MoveArmPIDCommand(0.0);

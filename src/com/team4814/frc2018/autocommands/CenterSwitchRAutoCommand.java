@@ -18,32 +18,32 @@ public class CenterSwitchRAutoCommand extends CommandGroup
 		addSequential(new WaitForGameDataCommand());
 
 		addParallel(new MoveArmPIDCommand(RobotConstants.ARM_SCALE_HEIGHT));
-		addSequential(new DrivePIDCommand(20.0, 0.5));
+		addSequential(new DrivePIDCommand(20.0, 0.5)); // drive forward
 
 		doWait();
 
-		addSequential(new DrivePIDRotateCommand(9.0, 0.7));
+		addSequential(new DrivePIDRotateCommand(9.0, 0.7)); // turn to right
 
 		doWait();
 
 		addParallel(new MoveArmPIDCommand(RobotConstants.ARM_SWITCH_HEIGHT));
-		addSequential(new DrivePIDCommand(80.0, 0.5));
+		addSequential(new DrivePIDCommand(80.0, 0.5)); // drive forward
 
 		doWait();
 
-		addSequential(new DrivePIDRotateCommand(-9.0, 0.7));
+		addSequential(new DrivePIDRotateCommand(-9.0, 0.7)); // turn to left
 
 		doWait();
 
-		addSequential(new DrivePIDCommand(22.0, 0.5));
+		addSequential(new DrivePIDCommand(22.0, 0.5)); // drive forward
 
 		doWait();
 
-		addSequential(new AutoIntakeCommand(-0.5, -0.5));
+		addSequential(new AutoIntakeCommand(-0.5, -0.5)); // release cube
 
 		doWait();
 
-		addSequential(new AutoIntakeCommand(0.0, 0.0));
+		addSequential(new AutoIntakeCommand(0.0, 0.0)); // set intake speed to 0
 
 	}
 
