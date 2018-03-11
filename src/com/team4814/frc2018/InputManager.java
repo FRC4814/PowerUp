@@ -7,6 +7,7 @@
 
 package com.team4814.frc2018;
 
+import com.team4814.frc2018.commands.ClimbCommand;
 import com.team4814.frc2018.commands.MoveArmCommand;
 import com.team4814.frc2018.commands.MoveArmPIDCommand;
 import com.team4814.frc2018.utils.CustomXboxController;
@@ -47,5 +48,8 @@ public class InputManager
 		Button bumperR = new XboxControllerButton(driverController, XboxButton.kBumperRight);
 		bumperL.whileHeld(new MoveArmCommand(false));
 		bumperR.whileHeld(new MoveArmCommand(true));
+
+		Button startClimb = new XboxControllerButton(driverController, XboxButton.kButtonStart);
+		startClimb.whenPressed(new ClimbCommand());
 	}
 }

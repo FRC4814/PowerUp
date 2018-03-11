@@ -11,6 +11,7 @@ import com.team4814.frc2018.autocommands.CenterSwitchLAutoCommand;
 import com.team4814.frc2018.autocommands.CenterSwitchRAutoCommand;
 import com.team4814.frc2018.commands.DrivePIDCommand;
 import com.team4814.frc2018.commands.MoveArmPIDCommand;
+import com.team4814.frc2018.subsystems.Climber;
 import com.team4814.frc2018.subsystems.DriveTrain;
 import com.team4814.frc2018.subsystems.Intake;
 import com.team4814.frc2018.subsystems.PIDArm;
@@ -36,6 +37,7 @@ public class Robot extends TimedRobot
 	public static final Intake intake = new Intake();
 
 	public static final PIDArm pidArm = new PIDArm();
+	public static final Climber climber = new Climber();
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();

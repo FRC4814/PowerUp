@@ -19,6 +19,7 @@ public class RobotMap
 	public static final int[] LEFT_MOTORS = { 5, 6, 7 };
 	public static final int[] RIGHT_MOTORS = { 2, 3, 4 };
 	public static final int ARM_MOTORS = 8;
+	public static final int CLIMB_MOTOR = 9;
 	public static final int[] INTAKE_MOTORS = { 0, 1 };
 
 	// USB
@@ -27,7 +28,8 @@ public class RobotMap
 	// DIO
 	public static final int[] LEFT_MOTOR_ENCODERS = { 0, 1 };
 	public static final int[] RIGHT_MOTOR_ENCODERS = { 2, 3 };
+	public static final int[] ARM_ENCODERS = { 4, 5 };
+	public static final int CLIMB_SWITCH = 6;
 	public static final int INTAKE_SWITCH = 9;
 
-	public static final int[] ARM_ENCODERS = { 4, 5 };
 }
