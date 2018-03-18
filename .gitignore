@@ -1,0 +1,10 @@
+# Build Files and Directories
+bin/
+build/
+dist/
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
