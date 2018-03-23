@@ -7,18 +7,18 @@
 
 package com.team4814.frc2018;
 
-import com.team4814.frc2018.autocommands.CenterScaleLAutoCommand;
-import com.team4814.frc2018.autocommands.CenterScaleRAutoCommand;
-import com.team4814.frc2018.autocommands.CenterSwitchLAutoCommand;
-import com.team4814.frc2018.autocommands.CenterSwitchRAutoCommand;
-import com.team4814.frc2018.commands.DrivePIDCommand;
-import com.team4814.frc2018.commands.MoveArmPIDCommand;
+import com.team4814.frc2018.auto.AutoGoal;
+import com.team4814.frc2018.auto.AutoPosition;
+import com.team4814.frc2018.autocommands.AutoCrossStartLineCommand;
+import com.team4814.frc2018.autocommands.AutoGoToSwitchCommand;
 import com.team4814.frc2018.subsystems.Climber;
 import com.team4814.frc2018.subsystems.DriveTrain;
 import com.team4814.frc2018.subsystems.Intake;
 import com.team4814.frc2018.subsystems.PIDArm;
 import com.team4814.frc2018.utils.DashboardVariable;
 
+import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -42,7 +42,19 @@ public class Robot extends TimedRobot
 	public static final Climber climber = new Climber();
 
 	Command m_autonomousCommand;
-	SendableChooser<Command> m_chooser = new SendableChooser<>();
+	SendableChooser<Command> m_autoModeChooser = new SendableChooser<>();
+	static SendableChooser<AutoPosition> m_autoPositionChooser = new SendableChooser<>();
+	static SendableChooser<AutoGoal> m_autoGoalChooser = new SendableChooser<>();
+
+	public static AutoPosition getAutoPosition()
+	{
+		return m_autoPositionChooser.getSelected();
+	}
+
+	public static AutoGoal getAutoGoal()
+	{
+		return m_autoGoalChooser.getSelected();
+	}
 
 	/**
 	 * This function is run when the robot is first started up and should be used
@@ -55,22 +67,33 @@ public class Robot extends TimedRobot
 
 		m_oi = new InputManager();
 
-		SmartDashboard.putData("Auto mode", m_chooser);
-		m_chooser.addDefault("None", null);
-		m_chooser.addObject("Drive Forward Test", new DrivePIDCommand(100.0, 0.4));
-		m_chooser.addObject("Center Switch R", new CenterSwitchRAutoCommand());
-		m_chooser.addObject("Center Switch L", new CenterSwitchLAutoCommand());
-		m_chooser.addObject("Center Scale L", new CenterScaleLAutoCommand());
-		m_chooser.addObject("Center Scale R", new CenterScaleRAutoCommand());
+		SmartDashboard.putData("Auto mode", m_autoModeChooser);
+		m_autoModeChooser.addDefault("No Scoring", new AutoCrossStartLineCommand());
+		m_autoModeChooser.addObject("Score ", new AutoGoToSwitchCommand());
+		//m_autoModeChooser.addObject("Drive Forward Test", new DrivePIDCommand(100.0, 0.4));
+		//m_autoModeChooser.addObject("Center Switch R", new AutoSlot2ToRightSwitch());
+		//m_autoModeChooser.addObject("Center Switch L", new AutoSlot2ToLeftSwitch());
+		//m_autoModeChooser.addObject("Center Scale L", new CenterScaleLAutoCommand());
+		//m_autoModeChooser.addObject("Center Scale R", new CenterScaleRAutoCommand());
+
+		SmartDashboard.putData("Auto Position", m_autoPositionChooser);
+		m_autoPositionChooser.addDefault("Center", AutoPosition.kCenter);
+		m_autoPositionChooser.addObject("Left", AutoPosition.kLeft);
+		m_autoPositionChooser.addObject("Right", AutoPosition.kRight);
+
+		SmartDashboard.putData("Auto Goal", m_autoGoalChooser);
+		m_autoGoalChooser.addDefault("Switch", AutoGoal.kSwitch);
+		m_autoGoalChooser.addObject("Scale", AutoGoal.kScale);
 
 		// Some test commands for the PID Arm
-		Command resetArmCommand = new MoveArmPIDCommand(0.0);
-		SmartDashboard.putData("Reset Arm", resetArmCommand);
-		Command raiseArmCommand = new MoveArmPIDCommand(5.0);
-		SmartDashboard.putData("Raise Arm", raiseArmCommand);
+		//		Command resetArmCommand = new MoveArmPIDCommand(0.0);
+		//		SmartDashboard.putData("Reset Arm", resetArmCommand);
+		//		Command raiseArmCommand = new MoveArmPIDCommand(5.0);
+		//		SmartDashboard.putData("Raise Arm", raiseArmCommand);
 
 		pidArm.armEncoder.reset();
 		driveTrain.resetEncoders();
+		CameraServer.getInstance().startAutomaticCapture();
 	}
 
 	@Override
@@ -83,6 +106,7 @@ public class Robot extends TimedRobot
 
 		SmartDashboard.putData(driveTrain.leftDrivePID);
 		SmartDashboard.putData(driveTrain.rightDrivePID);
+
 	}
 
 	/**
@@ -132,15 +156,35 @@ public class Robot extends TimedRobot
 		driveTrain.setSpeed(0.0, 0.0);
 		driveTrain.resetEncoders();
 
-		m_autonomousCommand = m_chooser.getSelected();
+		m_autonomousCommand = m_autoModeChooser.getSelected();
 
 		// schedule the autonomous command (example)
 		if (m_autonomousCommand != null)
 		{
+			m_autonomousCommand = new AutoGoToSwitchCommand();
 			m_autonomousCommand.start();
 		}
 
 		driveTrain.enablePID();
+	}
+
+	void waitForGameMessage()
+	{
+		while (true)
+		{
+			String message = DriverStation.getInstance().getGameSpecificMessage();
+			if (message != null && message.length() > 0)
+				break;
+
+			try
+			{
+				Thread.sleep(100);
+			}
+			catch (InterruptedException e)
+			{
+				e.printStackTrace();
+			}
+		}
 	}
 
 	/**

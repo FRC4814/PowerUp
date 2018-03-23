@@ -12,6 +12,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class LeftScaleAutoCommand extends CommandGroup
 {
+	@Override
+	public void start()
+	{
+	}
 
 	public LeftScaleAutoCommand()
 	{

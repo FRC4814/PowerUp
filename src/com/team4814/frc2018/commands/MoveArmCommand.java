@@ -28,7 +28,7 @@ public class MoveArmCommand extends Command
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute()
 	{
-		double speed = isUp ? 0.25 : -0.25;
+		double speed = isUp ? 0.5 : -0.5;
 		Robot.pidArm.setSpeed(speed);
 	}
 

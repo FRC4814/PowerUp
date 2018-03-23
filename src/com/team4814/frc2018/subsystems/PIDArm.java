@@ -19,7 +19,7 @@ public class PIDArm extends PIDSubsystem
 
 	public boolean pidEnabled = true;
 
-	public Talon armMotors;
+	public Talon armMotor;
 	public Encoder armEncoder;
 
 	// Initialize your subsystem here
@@ -27,9 +27,9 @@ public class PIDArm extends PIDSubsystem
 	{
 		super("PIDArm", kP, kI, kD, 0.0, 0.05);
 
-		armMotors = new Talon(RobotMap.ARM_MOTORS);
-		armMotors.setName(this.getName(), "Motor" + 0);
-		armMotors.setInverted(true);
+		armMotor = new Talon(RobotMap.ARM_MOTOR);
+		armMotor.setName(this.getName(), "Motor" + 0);
+		armMotor.setInverted(true);
 
 		// https://wpilib.screenstepslive.com/s/currentCS/m/java/l/599717-encoders-measuring-rotation-of-a-wheel-or-other-shaft
 		// http://www.cui.com/product/resource/amt10-v.pdf
@@ -99,6 +99,6 @@ public class PIDArm extends PIDSubsystem
 	{
 		//System.out.println("PID OUTPUT: " + speed);
 
-		armMotors.set(speed);
+		armMotor.set(speed);
 	}
 }

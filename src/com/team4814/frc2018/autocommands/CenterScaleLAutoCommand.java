@@ -32,11 +32,11 @@ public class CenterScaleLAutoCommand extends CommandGroup
 
 		doWait();
 
-		addSequential(new AutoIntakeCommand(-0.5, -0.5)); // release cube
+		addSequential(new DrivePIDRotateCommand(18.0, 0.7)); // turn right (to face scale)
 
 		doWait();
 
-		addSequential(new DrivePIDRotateCommand(18.0, 0.7)); // turn right (to face scale)
+		addSequential(new AutoIntakeCommand(-0.5, -0.5)); // release cube
 
 		doWait();
 

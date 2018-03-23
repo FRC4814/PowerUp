@@ -38,8 +38,8 @@ public class CenterSwitchAutoCommand extends CommandGroup
 
 		boolean goLeft = DriverStation.getInstance().getGameSpecificMessage().charAt(0) == 'L';
 		if (goLeft)
-			addSequential(new CenterSwitchLAutoCommand());
+			addSequential(new AutoSlot2ToLeftSwitch());
 		else
-			addSequential(new CenterSwitchRAutoCommand());
+			addSequential(new AutoSlot2ToRightSwitch());
 	}
 }
