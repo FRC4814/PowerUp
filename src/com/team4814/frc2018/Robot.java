@@ -11,6 +11,7 @@ import com.team4814.frc2018.auto.AutoGoal;
 import com.team4814.frc2018.auto.AutoPosition;
 import com.team4814.frc2018.autocommands.AutoCrossStartLineCommand;
 import com.team4814.frc2018.autocommands.AutoGoToSwitchCommand;
+import com.team4814.frc2018.autocommands.AutoSlot1CrossStartLine;
 import com.team4814.frc2018.subsystems.Climber;
 import com.team4814.frc2018.subsystems.DriveTrain;
 import com.team4814.frc2018.subsystems.Intake;
@@ -70,11 +71,7 @@ public class Robot extends TimedRobot
 		SmartDashboard.putData("Auto mode", m_autoModeChooser);
 		m_autoModeChooser.addDefault("No Scoring", new AutoCrossStartLineCommand());
 		m_autoModeChooser.addObject("Score ", new AutoGoToSwitchCommand());
-		//m_autoModeChooser.addObject("Drive Forward Test", new DrivePIDCommand(100.0, 0.4));
-		//m_autoModeChooser.addObject("Center Switch R", new AutoSlot2ToRightSwitch());
-		//m_autoModeChooser.addObject("Center Switch L", new AutoSlot2ToLeftSwitch());
-		//m_autoModeChooser.addObject("Center Scale L", new CenterScaleLAutoCommand());
-		//m_autoModeChooser.addObject("Center Scale R", new CenterScaleRAutoCommand());
+		m_autoModeChooser.addObject("Auto Slot1 Cross Start Line", new AutoSlot1CrossStartLine());
 
 		SmartDashboard.putData("Auto Position", m_autoPositionChooser);
 		m_autoPositionChooser.addDefault("Center", AutoPosition.kCenter);
@@ -104,8 +101,11 @@ public class Robot extends TimedRobot
 		SmartDashboard.putData(driveTrain.leftEncoder);
 		SmartDashboard.putData(driveTrain.rightEncoder);
 
-		SmartDashboard.putData(driveTrain.leftDrivePID);
-		SmartDashboard.putData(driveTrain.rightDrivePID);
+		//		SmartDashboard.putData(driveTrain.leftDrivePID);
+		//				SmartDashboard.putData(driveTrain.rightDrivePID);
+
+		SmartDashboard.putData(pidArm.armEncoder);
+		//		SmartDashboard.putData(pidArm.armMotor);
 
 	}
 
@@ -148,10 +148,10 @@ public class Robot extends TimedRobot
 	@Override
 	public void autonomousInit()
 	{
-		if (m_autonomousCommand != null)
-		{
-			m_autonomousCommand.cancel();
-		}
+		//		if (m_autonomousCommand != null)
+		//		{
+		//			m_autonomousCommand.cancel();
+		//		}
 
 		driveTrain.setSpeed(0.0, 0.0);
 		driveTrain.resetEncoders();
@@ -161,7 +161,6 @@ public class Robot extends TimedRobot
 		// schedule the autonomous command (example)
 		if (m_autonomousCommand != null)
 		{
-			m_autonomousCommand = new AutoGoToSwitchCommand();
 			m_autonomousCommand.start();
 		}
 

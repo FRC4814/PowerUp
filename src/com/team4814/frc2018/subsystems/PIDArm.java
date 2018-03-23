@@ -34,6 +34,7 @@ public class PIDArm extends PIDSubsystem
 		// https://wpilib.screenstepslive.com/s/currentCS/m/java/l/599717-encoders-measuring-rotation-of-a-wheel-or-other-shaft
 		// http://www.cui.com/product/resource/amt10-v.pdf
 		armEncoder = new Encoder(RobotMap.ARM_ENCODERS[0], RobotMap.ARM_ENCODERS[1], false, EncodingType.k4X);
+		armEncoder.setName(this.getName(), "ArmEncoder");
 		armEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
 		armEncoder.setMaxPeriod(.1);
 		armEncoder.setMinRate(10);
