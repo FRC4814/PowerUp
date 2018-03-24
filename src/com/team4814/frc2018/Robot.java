@@ -9,8 +9,8 @@ package com.team4814.frc2018;
 
 import com.team4814.frc2018.auto.AutoGoal;
 import com.team4814.frc2018.auto.AutoPosition;
-import com.team4814.frc2018.autocommands.AutoCrossStartLineCommand;
 import com.team4814.frc2018.autocommands.AutoGoToSwitchCommand;
+import com.team4814.frc2018.autocommands.AutoSlot1CrossStartLine;
 import com.team4814.frc2018.subsystems.Climber;
 import com.team4814.frc2018.subsystems.DriveTrain;
 import com.team4814.frc2018.subsystems.Intake;
@@ -42,7 +42,7 @@ public class Robot extends TimedRobot
 	public static final Climber climber = new Climber();
 
 	Command m_autonomousCommand;
-	SendableChooser<Command> m_autoModeChooser = new SendableChooser<>();
+	SendableChooser<String> m_autoModeChooser = new SendableChooser<>();
 	static SendableChooser<AutoPosition> m_autoPositionChooser = new SendableChooser<>();
 	static SendableChooser<AutoGoal> m_autoGoalChooser = new SendableChooser<>();
 
@@ -68,15 +68,15 @@ public class Robot extends TimedRobot
 		m_oi = new InputManager();
 
 		SmartDashboard.putData("Auto mode", m_autoModeChooser);
-		m_autoModeChooser.addDefault("No Scoring", new AutoCrossStartLineCommand());
-		m_autoModeChooser.addObject("Score Switch", new AutoGoToSwitchCommand());
+		m_autoModeChooser.addDefault("Center Switch", "AutoGoToSwitchCommand");
+		m_autoModeChooser.addObject("Drive Forward/Cross Line", "AutoCrossStartLineCommand");
 		m_autoModeChooser.addObject("Score Scale", null);
 		//		m_autoModeChooser.addObject("Auto Slot1 Cross Start Line", new AutoSlot1CrossStartLine());
 
-		SmartDashboard.putData("Auto Position", m_autoPositionChooser);
-		m_autoPositionChooser.addDefault("Left", AutoPosition.kLeft);
-		m_autoPositionChooser.addObject("Center", AutoPosition.kCenter);
-		m_autoPositionChooser.addObject("Right", AutoPosition.kRight);
+		//		SmartDashboard.putData("Auto Position", m_autoPositionChooser);
+		//		m_autoPositionChooser.addDefault("Left", AutoPosition.kLeft);
+		//		m_autoPositionChooser.addObject("Center", AutoPosition.kCenter);
+		//		m_autoPositionChooser.addObject("Right", AutoPosition.kRight);
 
 		//		SmartDashboard.putData("Auto Goal", m_autoGoalChooser);
 		//		m_autoGoalChooser.addDefault("Switch", AutoGoal.kSwitch);
@@ -149,15 +149,14 @@ public class Robot extends TimedRobot
 	@Override
 	public void autonomousInit()
 	{
-		//		if (m_autonomousCommand != null)
-		//		{
-		//			m_autonomousCommand.cancel();
-		//		}
-
 		driveTrain.setSpeed(0.0, 0.0);
 		driveTrain.resetEncoders();
 
-		m_autonomousCommand = m_autoModeChooser.getSelected();
+		String autoCommandName = m_autoModeChooser.getSelected();
+		if (autoCommandName.equals("AutoGoToSwitchCommand"))
+			m_autonomousCommand = new AutoGoToSwitchCommand();
+		else if (autoCommandName.equals("AutoCrossStartLineCommand"))
+			m_autonomousCommand = new AutoSlot1CrossStartLine();
 		// schedule the autonomous command (example)
 		if (m_autonomousCommand != null)
 		{
