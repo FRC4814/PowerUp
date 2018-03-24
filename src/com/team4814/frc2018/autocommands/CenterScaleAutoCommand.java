@@ -36,10 +36,10 @@ public class CenterScaleAutoCommand extends CommandGroup
 			}
 		}
 
-		boolean goLeft = DriverStation.getInstance().getGameSpecificMessage().charAt(1) == 'L';
-		if (goLeft)
-			addSequential(new CenterScaleLAutoCommand());
-		else
-			addSequential(new CenterScaleRAutoCommand());
+		//		boolean goLeft = DriverStation.getInstance().getGameSpecificMessage().charAt(1) == 'L';
+		//		if (goLeft)
+		//			addSequential(new CenterScaleLAutoCommand());
+		//		else
+		//			addSequential(new CenterScaleRAutoCommand());
 	}
 }
