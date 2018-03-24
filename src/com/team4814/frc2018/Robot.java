@@ -73,10 +73,10 @@ public class Robot extends TimedRobot
 		m_autoModeChooser.addObject("Score Scale", null);
 		//		m_autoModeChooser.addObject("Auto Slot1 Cross Start Line", new AutoSlot1CrossStartLine());
 
-		//		SmartDashboard.putData("Auto Position", m_autoPositionChooser);
-		//		m_autoPositionChooser.addDefault("Left", AutoPosition.kLeft);
-		//		m_autoPositionChooser.addObject("Center", AutoPosition.kCenter);
-		//		m_autoPositionChooser.addObject("Right", AutoPosition.kRight);
+		//				SmartDashboard.putData("Auto Position", m_autoPositionChooser);
+		//				m_autoPositionChooser.addDefault("Left", AutoPosition.kLeft);
+		//				m_autoPositionChooser.addObject("Center", AutoPosition.kCenter);
+		//				m_autoPositionChooser.addObject("Right", AutoPosition.kRight);
 
 		//		SmartDashboard.putData("Auto Goal", m_autoGoalChooser);
 		//		m_autoGoalChooser.addDefault("Switch", AutoGoal.kSwitch);
