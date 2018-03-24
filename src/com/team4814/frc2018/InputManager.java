@@ -8,7 +8,6 @@
 package com.team4814.frc2018;
 
 import com.team4814.frc2018.commands.MoveArmCommand;
-import com.team4814.frc2018.commands.MoveArmPIDCommand;
 import com.team4814.frc2018.utils.CustomXboxController;
 import com.team4814.frc2018.utils.XboxButton;
 import com.team4814.frc2018.utils.XboxControllerButton;
@@ -33,16 +32,16 @@ public class InputManager
 		Button outtakeButton = new XboxControllerButton(driverController, XboxButton.kButtonB);
 		outtakeButton.toggleWhenPressed(new ActivateOuttakeCommand());*/
 
-		Button presetA = new XboxControllerButton(driverController, XboxButton.kButtonA);
-		Button presetB = new XboxControllerButton(driverController, XboxButton.kButtonB);
-		Button presetX = new XboxControllerButton(driverController, XboxButton.kButtonX);
-		Button presetY = new XboxControllerButton(driverController, XboxButton.kButtonY);
-		Button presetStart = new XboxControllerButton(driverController, XboxButton.kButtonStart);
-		presetA.whenPressed(new MoveArmPIDCommand(RobotConstants.ARM_DEFAULT_HEIGHT)); // Idle
-		presetB.whenPressed(new MoveArmPIDCommand(RobotConstants.ARM_DUMP_HEIGHT, 2.5, true)); // Launch to switch
-		presetX.whenPressed(new MoveArmPIDCommand(RobotConstants.ARM_SWITCH_HEIGHT)); // Switch
-		presetY.whenPressed(new MoveArmPIDCommand(RobotConstants.ARM_SCALE_HEIGHT, 0.8)); // Scale
-		presetStart.whenPressed(new MoveArmPIDCommand(RobotConstants.ARM_HOLD_HEIGHT)); // Hold
+		//		Button presetA = new XboxControllerButton(driverController, XboxButton.kButtonA);
+		//		Button presetB = new XboxControllerButton(driverController, XboxButton.kButtonB);
+		//		Button presetX = new XboxControllerButton(driverController, XboxButton.kButtonX);
+		//		Button presetY = new XboxControllerButton(driverController, XboxButton.kButtonY);
+		//		Button presetStart = new XboxControllerButton(driverController, XboxButton.kButtonStart);
+		//		presetA.whenPressed(new MoveArmPIDCommand(RobotConstants.ARM_DEFAULT_HEIGHT)); // Idle
+		//		presetB.whenPressed(new MoveArmPIDCommand(RobotConstants.ARM_DUMP_HEIGHT, 2.5, true)); // Launch to switch
+		//		presetX.whenPressed(new MoveArmPIDCommand(RobotConstants.ARM_SWITCH_HEIGHT)); // Switch
+		//		presetY.whenPressed(new MoveArmPIDCommand(RobotConstants.ARM_SCALE_HEIGHT, 0.8)); // Scale
+		//		presetStart.whenPressed(new MoveArmPIDCommand(RobotConstants.ARM_HOLD_HEIGHT)); // Hold
 
 		Button bumperL = new XboxControllerButton(driverController, XboxButton.kBumperLeft);
 		Button bumperR = new XboxControllerButton(driverController, XboxButton.kBumperRight);
