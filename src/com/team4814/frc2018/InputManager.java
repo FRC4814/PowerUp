@@ -7,9 +7,12 @@
 
 package com.team4814.frc2018;
 
+import com.team4814.frc2018.commands.MoveArmCommand;
 import com.team4814.frc2018.commands.MoveArmPIDCommand;
 import com.team4814.frc2018.commands.ToggleIntakeSolenoidCommand;
 import com.team4814.frc2018.utils.CustomXboxController;
+import com.team4814.frc2018.utils.DPadButton;
+import com.team4814.frc2018.utils.DPadButton.Direction;
 import com.team4814.frc2018.utils.XboxButton;
 import com.team4814.frc2018.utils.XboxControllerButton;
 
@@ -43,10 +46,12 @@ public class InputManager
 		bumperL.whileHeld(new ToggleIntakeSolenoidCommand(false));
 		bumperR.whileHeld(new ToggleIntakeSolenoidCommand(true));
 
-		//		bumperL.whileHeld(new MoveArmCommand(false));
-		//		bumperR.whileHeld(new MoveArmCommand(true));
+		Button DPadUp = new DPadButton(driverController, Direction.Up);
+		Button DPadDown = new DPadButton(driverController, Direction.Down);
+		DPadUp.whileHeld(new MoveArmCommand(true));
+		DPadDown.whileHeld(new MoveArmCommand(false));
 
-		//		Button startClimb = new XboxControllerButton(driverController, XboxButton.kButtonStart);
+		//		Button startClimb = new XboxControllerButton(driverController, XboxButton.kButtonBack);
 		//		startClimb.whenPressed(new ClimbCommand());
 	}
 }
