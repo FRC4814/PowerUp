@@ -18,6 +18,8 @@ import com.team4814.frc2018.subsystems.PIDArm;
 import com.team4814.frc2018.utils.DashboardVariable;
 
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -40,6 +42,9 @@ public class Robot extends TimedRobot
 
 	public static final PIDArm pidArm = new PIDArm();
 	public static final Climber climber = new Climber();
+	public static final Compressor intakeCompressor = new Compressor(0);
+
+	public static final DoubleSolenoid intakeSolenoid = new DoubleSolenoid(0, 1);
 
 	Command m_autonomousCommand;
 	SendableChooser<String> m_autoModeChooser = new SendableChooser<>();
@@ -71,26 +76,12 @@ public class Robot extends TimedRobot
 		m_autoModeChooser.addDefault("Center Switch", "AutoGoToSwitchCommand");
 		m_autoModeChooser.addObject("Drive Forward/Cross Line", "AutoCrossStartLineCommand");
 		m_autoModeChooser.addObject("Score Scale", null);
-		//		m_autoModeChooser.addObject("Auto Slot1 Cross Start Line", new AutoSlot1CrossStartLine());
-
-		//				SmartDashboard.putData("Auto Position", m_autoPositionChooser);
-		//				m_autoPositionChooser.addDefault("Left", AutoPosition.kLeft);
-		//				m_autoPositionChooser.addObject("Center", AutoPosition.kCenter);
-		//				m_autoPositionChooser.addObject("Right", AutoPosition.kRight);
-
-		//		SmartDashboard.putData("Auto Goal", m_autoGoalChooser);
-		//		m_autoGoalChooser.addDefault("Switch", AutoGoal.kSwitch);
-		//		m_autoGoalChooser.addObject("Scale", AutoGoal.kScale);
-
-		// Some test commands for the PID Arm
-		//		Command resetArmCommand = new MoveArmPIDCommand(0.0);
-		//		SmartDashboard.putData("Reset Arm", resetArmCommand);
-		//		Command raiseArmCommand = new MoveArmPIDCommand(5.0);
-		//		SmartDashboard.putData("Raise Arm", raiseArmCommand);
 
 		pidArm.armEncoder.reset();
 		driveTrain.resetEncoders();
 		CameraServer.getInstance().startAutomaticCapture();
+		intakeCompressor.start();
+		intakeSolenoid.set(DoubleSolenoid.Value.kOff);
 	}
 
 	@Override
@@ -100,12 +91,7 @@ public class Robot extends TimedRobot
 
 		SmartDashboard.putData(driveTrain.leftEncoder);
 		SmartDashboard.putData(driveTrain.rightEncoder);
-
-		//		SmartDashboard.putData(driveTrain.leftDrivePID);
-		//				SmartDashboard.putData(driveTrain.rightDrivePID);
-
 		SmartDashboard.putData(pidArm.armEncoder);
-		//		SmartDashboard.putData(pidArm.armMotor);
 
 	}
 

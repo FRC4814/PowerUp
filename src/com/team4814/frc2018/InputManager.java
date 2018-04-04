@@ -7,8 +7,8 @@
 
 package com.team4814.frc2018;
 
-import com.team4814.frc2018.commands.MoveArmCommand;
 import com.team4814.frc2018.commands.MoveArmPIDCommand;
+import com.team4814.frc2018.commands.ToggleIntakeSolenoidCommand;
 import com.team4814.frc2018.utils.CustomXboxController;
 import com.team4814.frc2018.utils.XboxButton;
 import com.team4814.frc2018.utils.XboxControllerButton;
@@ -27,12 +27,6 @@ public class InputManager
 	{
 		driverController.setDeadzone(0.03);
 
-		/*Button intakeButton = new XboxControllerButton(driverController, XboxButton.kButtonA);
-		intakeButton.toggleWhenPressed(new ActivateIntakeCommand()); // or whenPressed
-		
-		Button outtakeButton = new XboxControllerButton(driverController, XboxButton.kButtonB);
-		outtakeButton.toggleWhenPressed(new ActivateOuttakeCommand());*/
-
 		Button presetA = new XboxControllerButton(driverController, XboxButton.kButtonA);
 		Button presetB = new XboxControllerButton(driverController, XboxButton.kButtonB);
 		Button presetX = new XboxControllerButton(driverController, XboxButton.kButtonX);
@@ -46,8 +40,11 @@ public class InputManager
 
 		Button bumperL = new XboxControllerButton(driverController, XboxButton.kBumperLeft);
 		Button bumperR = new XboxControllerButton(driverController, XboxButton.kBumperRight);
-		bumperL.whileHeld(new MoveArmCommand(false));
-		bumperR.whileHeld(new MoveArmCommand(true));
+		bumperL.whileHeld(new ToggleIntakeSolenoidCommand(false));
+		bumperR.whileHeld(new ToggleIntakeSolenoidCommand(true));
+
+		//		bumperL.whileHeld(new MoveArmCommand(false));
+		//		bumperR.whileHeld(new MoveArmCommand(true));
 
 		//		Button startClimb = new XboxControllerButton(driverController, XboxButton.kButtonStart);
 		//		startClimb.whenPressed(new ClimbCommand());

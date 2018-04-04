@@ -22,6 +22,8 @@ public class RobotMap
 	public static final int CLIMB_MOTOR = 9;
 	public static final int[] INTAKE_MOTORS = { 0, 1 };
 
+	// PCM
+
 	// USB
 	public static final int DRIVER_CONTROLLER = 0;
 
