@@ -33,20 +33,20 @@ public class IntakeCommand extends Command
 		}
 		else if (InputManager.driverController.getTriggerAxis(Hand.kLeft) >= 0.1) // Outake
 		{
-			if (Robot.pidArm.armEncoder.getDistance() <= 25) // Ground outake
+			if (Robot.pidArm.armEncoder.getDistance() <= -35) // Ground outake
 			{
 				intakeSpeed[0] = -1.0;
 				intakeSpeed[1] = -1.0;
 			}
-			else if (Robot.pidArm.armEncoder.getDistance() >= 50) // Scale outtake
+			else if (Robot.pidArm.armEncoder.getDistance() >= 0) // Scale outtake
 			{
 				intakeSpeed[0] = -1.0;
 				intakeSpeed[1] = -1.0;
 			}
 			else // Switch outtake
 			{
-				intakeSpeed[0] = -0.5;
-				intakeSpeed[1] = -0.5;
+				intakeSpeed[0] = -0.65;
+				intakeSpeed[1] = -0.65;
 			}
 		}
 
