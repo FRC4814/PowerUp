@@ -45,6 +45,7 @@ public class Robot extends TimedRobot
 	public static final Compressor intakeCompressor = new Compressor(0);
 
 	public static final DoubleSolenoid intakeSolenoid = new DoubleSolenoid(0, 1);
+	public static final DoubleSolenoid climberSolenoid = new DoubleSolenoid(2, 3);
 
 	Command m_autonomousCommand;
 	SendableChooser<String> m_autoModeChooser = new SendableChooser<>();

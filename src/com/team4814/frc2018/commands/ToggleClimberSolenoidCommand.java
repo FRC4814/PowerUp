@@ -2,18 +2,19 @@ package com.team4814.frc2018.commands;
 
 import com.team4814.frc2018.Robot;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ClimbCommand extends Command
+public class ToggleClimberSolenoidCommand extends Command
 {
 
-	public ClimbCommand()
+	public ToggleClimberSolenoidCommand()
 	{
 		// Use requires() here to declare subsystem dependencies
-		requires(Robot.climber);
+		// eg. requires(chassis);
 	}
 
 	// Called just before this Command runs the first time
@@ -24,8 +25,7 @@ public class ClimbCommand extends Command
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute()
 	{
-		double climberSpeed = 0.5;
-		Robot.climber.setSpeed(climberSpeed);
+		Robot.climberSolenoid.set(DoubleSolenoid.Value.kReverse);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -37,14 +37,12 @@ public class ClimbCommand extends Command
 	// Called once after isFinished returns true
 	protected void end()
 	{
-		double climbSpeed = 0.0;
-		Robot.climber.setSpeed(climbSpeed);
+		Robot.climberSolenoid.set(DoubleSolenoid.Value.kOff);
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted()
 	{
-		end();
 	}
 }
