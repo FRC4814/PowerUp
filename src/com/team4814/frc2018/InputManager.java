@@ -35,11 +35,11 @@ public class InputManager
 		Button presetX = new XboxControllerButton(driverController, XboxButton.kButtonX);
 		Button presetY = new XboxControllerButton(driverController, XboxButton.kButtonY);
 		Button presetStart = new XboxControllerButton(driverController, XboxButton.kButtonStart);
-		presetA.whenPressed(new MoveArmPIDCommand(RobotConstants.ARM_DEFAULT_HEIGHT)); // Idle
+		presetA.whenPressed(new MoveArmPIDCommand(RobotConstants.ARM_DEFAULT_HEIGHT, 2.5, true)); // Idle
 		presetB.whenPressed(new MoveArmPIDCommand(RobotConstants.ARM_DUMP_HEIGHT, 2.5, true)); // Launch to switch
-		presetX.whenPressed(new MoveArmPIDCommand(RobotConstants.ARM_SWITCH_HEIGHT)); // Switch
-		presetY.whenPressed(new MoveArmPIDCommand(RobotConstants.ARM_SCALE_HEIGHT, 0.8)); // Scale
-		presetStart.whenPressed(new MoveArmPIDCommand(RobotConstants.ARM_HOLD_HEIGHT)); // Hold
+		presetX.whenPressed(new MoveArmPIDCommand(RobotConstants.ARM_SWITCH_HEIGHT, 2.5, true)); // Switch
+		presetY.whenPressed(new MoveArmPIDCommand(RobotConstants.ARM_SCALE_HEIGHT, 2.5, true)); // Scale
+		presetStart.whenPressed(new MoveArmPIDCommand(RobotConstants.ARM_HOLD_HEIGHT, 2.5, true)); // Hold
 
 		Button bumperL = new XboxControllerButton(driverController, XboxButton.kBumperLeft);
 		Button bumperR = new XboxControllerButton(driverController, XboxButton.kBumperRight);

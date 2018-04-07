@@ -31,7 +31,7 @@ public class RobotMap
 	public static final int[] LEFT_MOTOR_ENCODERS = { 0, 1 };
 	public static final int[] RIGHT_MOTOR_ENCODERS = { 2, 3 };
 	public static final int[] ARM_ENCODERS = { 4, 5 };
-	public static final int CLIMB_SWITCH = 6;
+	//	public static final int CLIMB_SWITCH = 6;
 	public static final int INTAKE_SWITCH = 9;
 
 }

@@ -3,11 +3,11 @@ package com.team4814.frc2018;
 public class RobotConstants
 {
 	// Arm
-	public static final double ARM_DEFAULT_HEIGHT = 0; // constant
-	public static final double ARM_HOLD_HEIGHT = 8.4375; // 15
-	public static final double ARM_SWITCH_HEIGHT = 27.1875; // 45
-	public static final double ARM_SCALE_HEIGHT = 57.1875; // 93
-	public static final double ARM_DUMP_HEIGHT = 50.9375; // 83
+	public static final double ARM_DEFAULT_HEIGHT = -46.02; // constant
+	public static final double ARM_HOLD_HEIGHT = -37.5825; // 15
+	public static final double ARM_SWITCH_HEIGHT = -18.8325; // 45
+	public static final double ARM_SCALE_HEIGHT = 11.1675; // 93
+	public static final double ARM_DUMP_HEIGHT = 4.9175; // 83
 	// new encoder values are 100 clicks per rotation instead of previous 160. Below are all previous values:
 	/*
 	 * Arm default: 0
@@ -17,9 +17,18 @@ public class RobotConstants
 	 * Arm dump: 81.5
 	 * Arm lift: 80.0
 	 */
+	// using bottom as zero instead of auto contraption:
+	/*
+	 * 0
+	 * 8.4375
+	 * 27.1875
+	 * 57.1875
+	 * 50.9375
+	 * 50
+	 */
 
 	// Auto constant
-	public static final double ARM_LIFT_HEIGHT = 50.0;
+	public static final double ARM_LIFT_HEIGHT = 3.98;
 
 	// Intake
 	public static final double[] INTAKE_OUTAKE_DEFAULT_SPEED = { 0.0, 0.0 };

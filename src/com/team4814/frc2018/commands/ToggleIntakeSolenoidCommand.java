@@ -26,9 +26,9 @@ public class ToggleIntakeSolenoidCommand extends Command
 	protected void execute()
 	{
 		if (isClamp) // secure cube
-			Robot.intakeSolenoid.set(DoubleSolenoid.Value.kForward);
-		else // release cube
 			Robot.intakeSolenoid.set(DoubleSolenoid.Value.kReverse);
+		else // release cube
+			Robot.intakeSolenoid.set(DoubleSolenoid.Value.kForward);
 
 	}
 

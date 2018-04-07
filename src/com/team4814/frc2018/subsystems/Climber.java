@@ -1,9 +1,7 @@
 package com.team4814.frc2018.subsystems;
 
 import com.team4814.frc2018.RobotMap;
-import com.team4814.frc2018.commands.ClimbCommand;
 
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -13,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Climber extends Subsystem
 {
 	protected Talon climbMotor;
-	protected DigitalInput climbSwitch;
+	//	protected DigitalInput climbSwitch;
 
 	public Climber()
 	{
@@ -22,7 +20,7 @@ public class Climber extends Subsystem
 		climbMotor = new Talon(RobotMap.CLIMB_MOTOR);
 		climbMotor.setName("Motor" + 0);
 
-		climbSwitch = new DigitalInput(RobotMap.CLIMB_SWITCH);
+		//		climbSwitch = new DigitalInput(RobotMap.CLIMB_SWITCH);
 	}
 
 	public void setSpeed(double speed)
@@ -33,6 +31,6 @@ public class Climber extends Subsystem
 	public void initDefaultCommand()
 	{
 		// Set the default command for a subsystem here.
-		setDefaultCommand(new ClimbCommand());
+		//		setDefaultCommand(new ClimbCommand());
 	}
 }
