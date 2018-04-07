@@ -5,9 +5,12 @@ public class RobotConstants
 	// Arm
 	public static final double ARM_DEFAULT_HEIGHT = -46.02; // constant
 	public static final double ARM_HOLD_HEIGHT = -37.5825; // 15
-	public static final double ARM_SWITCH_HEIGHT = -18.8325; // 45
-	public static final double ARM_SCALE_HEIGHT = 11.1675; // 93
+	public static final double ARM_SWITCH_HEIGHT = -13.8325; // 45
+	public static final double ARM_SCALE_HEIGHT = 14.1675; // 93
 	public static final double ARM_DUMP_HEIGHT = 4.9175; // 83
+	//	public static final double ARM_DEFAULT_HEIGHT = -300.0;
+	//	public static final double ARM_HOLD_HEIGHT = -200.5825; // 15
+	//	public static final double ARM_SWITCH_HEIGHT = -100.8325; // 45
 	// new encoder values are 100 clicks per rotation instead of previous 160. Below are all previous values:
 	/*
 	 * Arm default: 0
@@ -28,7 +31,7 @@ public class RobotConstants
 	 */
 
 	// Auto constant
-	public static final double ARM_LIFT_HEIGHT = 3.98;
+	public static final double ARM_LIFT_HEIGHT = 7.98;
 
 	// Intake
 	public static final double[] INTAKE_OUTAKE_DEFAULT_SPEED = { 0.0, 0.0 };

@@ -4,6 +4,7 @@ import com.team4814.frc2018.RobotConstants;
 import com.team4814.frc2018.commands.DriveBothPIDCommand;
 import com.team4814.frc2018.commands.DrivePIDCommand;
 import com.team4814.frc2018.commands.MoveArmPIDCommand;
+import com.team4814.frc2018.commands.ToggleIntakeSolenoidCommand;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -15,6 +16,7 @@ public class AutoSlot2ToRightSwitch extends CommandGroup
 
 	public AutoSlot2ToRightSwitch()
 	{
+		addParallel(new ToggleIntakeSolenoidCommand(true));
 
 		addParallel(new MoveArmPIDCommand(RobotConstants.ARM_LIFT_HEIGHT));
 
@@ -26,7 +28,7 @@ public class AutoSlot2ToRightSwitch extends CommandGroup
 
 		addSequential(new DrivePIDCommand(25.0, 0.7), 0.7);
 
-		addSequential(new AutoIntakeCommand(-0.4, -0.4));
+		addSequential(new AutoIntakeCommand(-0.6, -0.6));
 
 		doWait();
 

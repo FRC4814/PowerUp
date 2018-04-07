@@ -44,9 +44,9 @@ public class PIDArm extends PIDSubsystem
 
 		setAbsoluteTolerance(0.1);
 		getPIDController().setContinuous(false);
-		getPIDController().setInputRange(0.0, 95.0);
+		getPIDController().setInputRange(-55.0, 40.0);
 
-		enableSpeedLimit(true);
+		//		enableSpeedLimit(true);
 		// Use these to get going:
 		// setSetpoint() - Sets where the PID controller should move the system
 		// to
