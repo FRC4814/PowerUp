@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.DriverStation;
 /**
  *
  */
-public class AutoGoToSwitchCommand extends DelayedCommandGroup
+public class AutoSlot1ToScaleCommand extends DelayedCommandGroup
 {
 	@Override
 	public void buildCommands()
@@ -16,12 +16,12 @@ public class AutoGoToSwitchCommand extends DelayedCommandGroup
 		//		AutoPosition startPosition = Robot.getAutoPosition();
 		//		AutoGoal destination = Robot.getAutoGoal();
 
-		AutoGoalState switchState = AutoGoalState.fromChar(gameMessage.charAt(0));
-		//AutoGoalState scaleState = AutoGoalState.fromChar(gameMessage.charAt(1));
+		//		AutoGoalState switchState = AutoGoalState.fromChar(gameMessage.charAt(0));
+		AutoGoalState scaleState = AutoGoalState.fromChar(gameMessage.charAt(1));
 
-		if (switchState == AutoGoalState.kLeft)
-			addSequential(new AutoSlot2ToLeftSwitch());
+		if (scaleState == AutoGoalState.kLeft)
+			addSequential(new AutoSlot1ToLeftScale());
 		else
-			addSequential(new AutoSlot2ToRightSwitch());
+			addSequential(new AutoSlot1ToRightScale());
 	}
 }

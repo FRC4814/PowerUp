@@ -9,8 +9,9 @@ package com.team4814.frc2018;
 
 import com.team4814.frc2018.auto.AutoGoal;
 import com.team4814.frc2018.auto.AutoPosition;
+import com.team4814.frc2018.autocommands.AutoCrossStartLineCommand;
 import com.team4814.frc2018.autocommands.AutoGoToSwitchCommand;
-import com.team4814.frc2018.autocommands.AutoSlot1CrossStartLine;
+import com.team4814.frc2018.autocommands.AutoSlot1ToScaleCommand;
 import com.team4814.frc2018.subsystems.Climber;
 import com.team4814.frc2018.subsystems.DriveTrain;
 import com.team4814.frc2018.subsystems.Intake;
@@ -76,7 +77,8 @@ public class Robot extends TimedRobot
 		SmartDashboard.putData("Auto mode", m_autoModeChooser);
 		m_autoModeChooser.addDefault("Center Switch", "AutoGoToSwitchCommand");
 		m_autoModeChooser.addObject("Drive Forward/Cross Line", "AutoCrossStartLineCommand");
-		m_autoModeChooser.addObject("Score Scale", null);
+		m_autoModeChooser.addObject("Left Score Scale", "AutoSlot1ToScaleCommand");
+		m_autoModeChooser.addObject("Right Score Scale", null);
 
 		pidArm.armEncoder.reset();
 		driveTrain.resetEncoders();
@@ -143,7 +145,11 @@ public class Robot extends TimedRobot
 		if (autoCommandName.equals("AutoGoToSwitchCommand"))
 			m_autonomousCommand = new AutoGoToSwitchCommand();
 		else if (autoCommandName.equals("AutoCrossStartLineCommand"))
-			m_autonomousCommand = new AutoSlot1CrossStartLine();
+			m_autonomousCommand = new AutoCrossStartLineCommand();
+		else if (autoCommandName.equals("AutoSlot1ToScaleCommand"))
+			m_autonomousCommand = new AutoSlot1ToScaleCommand();
+		//		else if (autoCommandName.equals("AutoSlot3ToScaleCommand"))
+		//			m_autonomousCommand = new AutoSlot3ToScaleCommand();
 		// schedule the autonomous command (example)
 		if (m_autonomousCommand != null)
 		{

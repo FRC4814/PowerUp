@@ -2,6 +2,7 @@ package com.team4814.frc2018.subsystems;
 
 import com.team4814.frc2018.RobotMap;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -11,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Climber extends Subsystem
 {
 	protected Talon climbMotor;
-	//	protected DigitalInput climbSwitch;
+	protected DigitalInput climbSwitch;
 
 	public Climber()
 	{

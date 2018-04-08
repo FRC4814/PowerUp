@@ -16,6 +16,7 @@ public class AutoSlot2ToRightSwitch extends CommandGroup
 
 	public AutoSlot2ToRightSwitch()
 	{
+		// deliver cube
 		addParallel(new ToggleIntakeSolenoidCommand(true));
 
 		addParallel(new MoveArmPIDCommand(RobotConstants.ARM_LIFT_HEIGHT));
@@ -24,15 +25,24 @@ public class AutoSlot2ToRightSwitch extends CommandGroup
 
 		addParallel(new MoveArmPIDCommand(RobotConstants.ARM_SWITCH_HEIGHT));
 
-		addSequential(new DriveBothPIDCommand(37.0, 65.0, 0.9));
+		addSequential(new DriveBothPIDCommand(37.0, 65.0, 0.9), 3.75);
 
-		addSequential(new DrivePIDCommand(25.0, 0.7), 0.7);
+		addSequential(new DrivePIDCommand(25.0, 0.7), 0.5);
 
 		addSequential(new AutoIntakeCommand(-0.6, -0.6));
 
 		doWait();
 
 		addSequential(new AutoIntakeCommand(0.0, 0.0));
+
+		// back up and lower arm after delivering cube
+		addParallel(new ToggleIntakeSolenoidCommand(false));
+
+		addSequential(new DriveBothPIDCommand(-50.0, -50.0), 2.0);
+
+		doWait();
+
+		addSequential(new MoveArmPIDCommand(RobotConstants.ARM_DEFAULT_HEIGHT));
 
 	}
 
