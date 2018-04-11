@@ -38,11 +38,13 @@ public class PIDArm extends PIDSubsystem
 		armEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
 		armEncoder.setMaxPeriod(.1);
 		armEncoder.setMinRate(10);
-		armEncoder.setDistancePerPulse(0.054); // distance = degrees
+		armEncoder.setDistancePerPulse(5.4); // distance = degrees
+		// 0.054 * 100 = 5.4
 		armEncoder.setSamplesToAverage(7);
 		armEncoder.reset();
 
-		setAbsoluteTolerance(0.1);
+		setAbsoluteTolerance(0.001);
+		// 0.001
 		getPIDController().setContinuous(false);
 		getPIDController().setInputRange(-55.0, 40.0);
 
