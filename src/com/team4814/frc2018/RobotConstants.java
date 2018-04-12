@@ -5,7 +5,7 @@ public class RobotConstants
 	// Arm
 	public static final double ARM_DEFAULT_HEIGHT = -46.17735; // constant old: -0.4602
 	public static final double ARM_HOLD_HEIGHT = -37.5825; // 15 old -0.375825
-	public static final double ARM_SWITCH_HEIGHT = -13.8325; // 45 old -0.138325
+	public static final double ARM_SWITCH_HEIGHT = -18.8325; // 45 old -0.138325 -13.8325
 	public static final double ARM_SCALE_HEIGHT = 14.1675; // 93 old 0.141675
 	public static final double ARM_DUMP_HEIGHT = 4.9175; // 83 old 0.049175
 
