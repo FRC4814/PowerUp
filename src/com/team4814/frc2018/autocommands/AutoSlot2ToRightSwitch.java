@@ -29,7 +29,7 @@ public class AutoSlot2ToRightSwitch extends CommandGroup
 
 		addSequential(new DrivePIDCommand(25.0, 0.7), 0.5);
 
-		addSequential(new AutoIntakeCommand(-0.6, -0.6));
+		addSequential(new AutoIntakeCommand(-0.7, -0.7));
 
 		doWait();
 
@@ -43,6 +43,8 @@ public class AutoSlot2ToRightSwitch extends CommandGroup
 		doWait();
 
 		addSequential(new MoveArmPIDCommand(RobotConstants.ARM_DEFAULT_HEIGHT));
+
+		addSequential(new Auto2CubeTest(false));
 
 	}
 

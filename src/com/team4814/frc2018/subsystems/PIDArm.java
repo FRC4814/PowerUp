@@ -13,9 +13,9 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
  */
 public class PIDArm extends PIDSubsystem
 {
-	static final double kP = 0.05;
-	static final double kI = 0.0;
-	static final double kD = 0.03;
+	static final double kP = 0.012; //changed from 0.05 to 0.0175 at 10:20 Thursday 0.0175
+	static final double kI = 0.0005;
+	static final double kD = 0.015; // 0.03
 
 	public boolean pidEnabled = true;
 
@@ -38,15 +38,22 @@ public class PIDArm extends PIDSubsystem
 		armEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
 		armEncoder.setMaxPeriod(.1);
 		armEncoder.setMinRate(10);
-		armEncoder.setDistancePerPulse(5.4); // distance = degrees
+		armEncoder.setDistancePerPulse(0.1266); // distance = degrees
+		// original value 0.054
 		// 0.054 * 100 = 5.4
+		//0.054 * 2048/4800 = 0.02304
+		//0.054 * 2048/48 = 2.304
+
+		//0.054 degrees per pulse * 4800 pulses/rev = 2.592 degrees/rev, * 1/ (2048 pulses/rev) = 0.1266
 		armEncoder.setSamplesToAverage(7);
 		armEncoder.reset();
 
-		setAbsoluteTolerance(0.001);
+		setAbsoluteTolerance(0.1);
 		// 0.001
+
+		//0.001*100 * 2048/4800 = 0.0427
 		getPIDController().setContinuous(false);
-		getPIDController().setInputRange(-55.0, 40.0);
+		getPIDController().setInputRange(-55.0, 30.0);
 
 		//		enableSpeedLimit(true);
 		// Use these to get going:
