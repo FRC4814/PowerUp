@@ -26,11 +26,11 @@ public class TestAutoRightSideSwitchCommand extends CommandGroup
 
 		addSequential(new DriveBothPIDCommand(150.0, 150.0, 0.9));
 
+		addSequential(new MoveArmPIDCommand(RobotConstants.ARM_SWITCH_HEIGHT), 0.75);
+
 		if (switchState == AutoGoalState.kRight)
 		{
-			addSequential(new DriveBothPIDCommand(-25.0, 25.0, 0.7), 2.0);
-
-			addParallel(new MoveArmPIDCommand(RobotConstants.ARM_SWITCH_HEIGHT));
+			addSequential(new DriveBothPIDCommand(-25.0, 25.0, 0.8), 2.0);
 
 			addSequential(new DriveBothPIDCommand(25.0, 25.0, 0.9), 1.0);
 

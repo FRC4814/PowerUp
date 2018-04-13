@@ -13,6 +13,8 @@ import com.team4814.frc2018.autocommands.AutoCrossStartLineCommand;
 import com.team4814.frc2018.autocommands.AutoGoToSwitchCommand;
 import com.team4814.frc2018.autocommands.AutoSlot1ToScaleCommand;
 import com.team4814.frc2018.autocommands.TestAutoLeftCube2;
+import com.team4814.frc2018.autocommands.TestAutoLeftSideSwitchCommand;
+import com.team4814.frc2018.autocommands.TestAutoRightSideSwitchCommand;
 import com.team4814.frc2018.subsystems.Climber;
 import com.team4814.frc2018.subsystems.DriveTrain;
 import com.team4814.frc2018.subsystems.Intake;
@@ -80,6 +82,8 @@ public class Robot extends TimedRobot
 		m_autoModeChooser.addObject("Left Score Scale", "AutoSlot1ToScaleCommand");
 		m_autoModeChooser.addObject("Right Score Scale", null);
 		m_autoModeChooser.addObject("Test Left Center 2 cube", "Test2CubeLeft");
+		m_autoModeChooser.addObject("Test Side Switch Left", "TestAutoLeftSideSwitchCommand");
+		m_autoModeChooser.addObject("Test Side Switch Right", "TestAutoRightSideSwitchCommand");
 
 		pidArm.armEncoder.reset();
 		driveTrain.resetEncoders();
@@ -151,8 +155,10 @@ public class Robot extends TimedRobot
 			m_autonomousCommand = new AutoSlot1ToScaleCommand();
 		else if (autoCommandName.equals("Test2CubeLeft"))
 			m_autonomousCommand = new TestAutoLeftCube2();
-		//		else if (autoCommandName.equals("AutoSlot3ToScaleCommand"))
-		//			m_autonomousCommand = new AutoSlot3ToScaleCommand();
+		else if (autoCommandName.equals("TestAutoLeftSideSwitchCommand"))
+			m_autonomousCommand = new TestAutoLeftSideSwitchCommand();
+		else if (autoCommandName.equals("TestAutoRightSideSwitchCommand"))
+			m_autonomousCommand = new TestAutoRightSideSwitchCommand();
 		// schedule the autonomous command (example)
 		if (m_autonomousCommand != null)
 		{
