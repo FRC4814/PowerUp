@@ -12,13 +12,13 @@ import com.team4814.frc2018.auto.AutoPosition;
 import com.team4814.frc2018.autocommands.AutoCrossStartLineCommand;
 import com.team4814.frc2018.autocommands.AutoGoToSwitchCommand;
 import com.team4814.frc2018.autocommands.AutoSlot1ToScaleCommand;
+import com.team4814.frc2018.autocommands.TestAutoLeftCube2;
 import com.team4814.frc2018.subsystems.Climber;
 import com.team4814.frc2018.subsystems.DriveTrain;
 import com.team4814.frc2018.subsystems.Intake;
 import com.team4814.frc2018.subsystems.PIDArm;
 import com.team4814.frc2018.utils.DashboardVariable;
 
-import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DriverStation;
@@ -79,10 +79,11 @@ public class Robot extends TimedRobot
 		m_autoModeChooser.addObject("Drive Forward/Cross Line", "AutoCrossStartLineCommand");
 		m_autoModeChooser.addObject("Left Score Scale", "AutoSlot1ToScaleCommand");
 		m_autoModeChooser.addObject("Right Score Scale", null);
+		m_autoModeChooser.addObject("Test Left Center 2 cube", "Test2CubeLeft");
 
 		pidArm.armEncoder.reset();
 		driveTrain.resetEncoders();
-		CameraServer.getInstance().startAutomaticCapture();
+		//		CameraServer.getInstance().startAutomaticCapture();
 		intakeCompressor.start();
 		intakeSolenoid.set(DoubleSolenoid.Value.kOff);
 	}
@@ -148,6 +149,8 @@ public class Robot extends TimedRobot
 			m_autonomousCommand = new AutoCrossStartLineCommand();
 		else if (autoCommandName.equals("AutoSlot1ToScaleCommand"))
 			m_autonomousCommand = new AutoSlot1ToScaleCommand();
+		else if (autoCommandName.equals("Test2CubeLeft"))
+			m_autonomousCommand = new TestAutoLeftCube2();
 		//		else if (autoCommandName.equals("AutoSlot3ToScaleCommand"))
 		//			m_autonomousCommand = new AutoSlot3ToScaleCommand();
 		// schedule the autonomous command (example)

@@ -20,11 +20,11 @@ public class AutoSlot2ToLeftSwitch extends CommandGroup
 
 		addParallel(new MoveArmPIDCommand(RobotConstants.ARM_LIFT_HEIGHT));
 
-		addSequential(new DriveBothPIDCommand(45.0, 80.0, 0.9), 3.75);
+		addSequential(new DriveBothPIDCommand(45.0, 80.0, 0.9), 3.5); // 3.5
 
 		addParallel(new MoveArmPIDCommand(RobotConstants.ARM_SWITCH_HEIGHT));
 
-		addSequential(new DriveBothPIDCommand(80.0, 50.0, 0.9), 2.5);
+		addSequential(new DriveBothPIDCommand(80.0, 50.0, 0.9), 3.5); // 3.5
 
 		// addParallel(new ToggleIntakeSolenoidCommand(false));
 
@@ -43,7 +43,7 @@ public class AutoSlot2ToLeftSwitch extends CommandGroup
 
 		addSequential(new MoveArmPIDCommand(RobotConstants.ARM_DEFAULT_HEIGHT));
 
-		//		addSequential(new TestAutoCube2(true));
+		//		addSequential(new TestAutoLeftCube2(true));
 
 	}
 

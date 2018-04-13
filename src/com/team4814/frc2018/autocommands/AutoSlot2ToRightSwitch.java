@@ -46,7 +46,7 @@ public class AutoSlot2ToRightSwitch extends CommandGroup
 
 		addSequential(new MoveArmPIDCommand(RobotConstants.ARM_DEFAULT_HEIGHT));
 
-		//		addSequential(new TestAutoCube2(false));
+		//		addSequential(new TestAutoLeftCube2(false));
 
 	}
 
