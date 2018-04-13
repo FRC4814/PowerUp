@@ -2,6 +2,7 @@ package com.team4814.frc2018.autocommands;
 
 import com.team4814.frc2018.RobotConstants;
 import com.team4814.frc2018.commands.DriveBothPIDCommand;
+import com.team4814.frc2018.commands.DrivePIDCommand;
 import com.team4814.frc2018.commands.MoveArmPIDCommand;
 import com.team4814.frc2018.commands.ToggleIntakeSolenoidCommand;
 
@@ -28,7 +29,9 @@ public class AutoSlot2ToLeftSwitch extends CommandGroup
 
 		// addParallel(new ToggleIntakeSolenoidCommand(false));
 
-		addSequential(new AutoIntakeCommand(-0.7, -0.7));
+		addSequential(new DrivePIDCommand(25.0, 0.7), 0.5);
+
+		addSequential(new AutoIntakeCommand(-0.8, -0.8));
 
 		doWait();
 

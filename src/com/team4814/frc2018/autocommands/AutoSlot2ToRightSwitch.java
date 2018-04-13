@@ -31,7 +31,7 @@ public class AutoSlot2ToRightSwitch extends CommandGroup
 
 		// addParallel(new ToggleIntakeSolenoidCommand(false));
 
-		addSequential(new AutoIntakeCommand(-0.7, -0.7));
+		addSequential(new AutoIntakeCommand(-0.8, -0.8));
 
 		doWait();
 
