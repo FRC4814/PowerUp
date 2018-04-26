@@ -53,7 +53,7 @@ public class PIDArm extends PIDSubsystem
 
 		//0.001*100 * 2048/4800 = 0.0427
 		getPIDController().setContinuous(false);
-		getPIDController().setInputRange(-55.0, 30.0);
+		getPIDController().setInputRange(-75.0, 30.0);
 
 		//		enableSpeedLimit(true);
 		// Use these to get going:
