@@ -45,8 +45,8 @@ public class IntakeCommand extends Command
 			}
 			else // Switch outtake
 			{
-				intakeSpeed[0] = -0.65;
-				intakeSpeed[1] = -0.65;
+				intakeSpeed[0] = -1.0;
+				intakeSpeed[1] = -1.0;
 			}
 		}
 

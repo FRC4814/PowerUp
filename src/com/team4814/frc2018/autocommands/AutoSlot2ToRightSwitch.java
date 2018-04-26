@@ -21,11 +21,11 @@ public class AutoSlot2ToRightSwitch extends CommandGroup
 
 		addParallel(new MoveArmPIDCommand(RobotConstants.ARM_LIFT_HEIGHT));
 
-		addSequential(new DriveBothPIDCommand(65.0, 37.0, 0.9));
+		addSequential(new DriveBothPIDCommand(60.0, 37.0, 0.9));
 
 		addParallel(new MoveArmPIDCommand(RobotConstants.ARM_SWITCH_HEIGHT));
 
-		addSequential(new DriveBothPIDCommand(37.0, 70.0, 0.9), 3.75);
+		addSequential(new DriveBothPIDCommand(38.0, 72.0, 0.9), 3.75);
 
 		addSequential(new DrivePIDCommand(25.0, 0.7), 0.5);
 

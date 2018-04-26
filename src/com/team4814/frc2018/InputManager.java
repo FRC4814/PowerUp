@@ -40,7 +40,7 @@ public class InputManager
 		//		presetB.whenPressed(new MoveArmPIDCommand(RobotConstants.ARM_SCALE_HEIGHT)); // Launch to switch
 		presetX.whenPressed(new MoveArmPIDCommand(RobotConstants.ARM_SWITCH_HEIGHT, 1.75, true)); // Switch
 		presetY.whenPressed(new MoveArmPIDCommand(RobotConstants.ARM_SCALE_HEIGHT)); // Scale
-		//		presetStart.whenPressed(new MoveArmPIDCommand(RobotConstants.ARM_HOLD_HEIGHT, 1.5, true)); // Hold
+		//		presetStart.whenPressed(new ResetPresetsCommand()); 
 
 		Button presetStart = new XboxControllerButton(driverController, XboxButton.kButtonStart);
 		Button presetBack = new XboxControllerButton(driverController, XboxButton.kButtonBack);
